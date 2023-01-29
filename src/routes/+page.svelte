@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import AllChapters from '../components/All_Chapters.svelte';
 
 	let chapters = [];
 	onMount(async () => {
@@ -12,25 +13,23 @@
 	};
 
 	getChapters();
+	let searchString;
 </script>
 
 <h1 class="text-5xl font-bold mt-0 mb-6 text-center py-3">Welcome to Quran</h1>
-<div class="flex flex-row flex-wrap place-content-center gap-4">
-	{#each chapters as chapter}
-		<div class="card w-96 bg-base-100 shadow-xl">
-			<!-- <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure> -->
-			<div class="card-body">
-				<h2 class="card-title">{chapter.name_simple}</h2>
-				<p>{chapter.translated_name.name}</p>
-				<div class="card-actions justify-end">
-					<button class="btn btn-primary">
-						<a href="/chapter/{chapter.id}">Read now {chapter.id}</a>
-					</button>
-				</div>
-			</div>
-		</div>
-	{/each}
+<div class="flex flex-row mb-6 justify-center">
+	<input
+		bind:value={searchString}
+		type="text"
+		class="border border-gray-400 rounded p-2"
+		placeholder="Search Quran chapters"
+		id="searchInput"
+	/>
+	<button class="btn btn-secondary ml-2">Search</button>
+	<p>{searchString}</p>
 </div>
+
+<AllChapters {chapters} />
 
 <style lang="postcss">
 	:global(html) {
