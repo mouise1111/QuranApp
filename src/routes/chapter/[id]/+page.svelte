@@ -1,16 +1,33 @@
 <script>
-	export let data;
-	const { chapterDetail } = data;
-	let sameText = false;
+	import ChapterInfo from '../../../components/Chapter_Info.svelte';
+	import VersesArabic from '../../../components/Verses_Arabic.svelte';
+	import VersesEnglish from '../../../components/Verses_English.svelte';
 
-	if (chapterDetail.chapter.name_complex === chapterDetail.chapter.name_simple) {
-		sameText = true;
+	export let data;
+	const { chapterDetail, verseDetailEnglish, verseDetailArabic, verseStyle } = data;
+
+	let showEnglish = true;
+	let showArabic = false;
+
+	function toggleArabic() {
+		showArabic = true;
+		showEnglish = false;
 	}
-	console.log(sameText);
+	function toggleEnglish() {
+		showArabic = false;
+		showEnglish = true;
+	}
 </script>
 
-<!-- <h1 class="text-5xl font-bold mt-0 mb-6 text-center py-3">{data.chapter.name_complex}</h1> -->
-<h1 class="text-5xl font-bold mt-0 mb-0 text-center py-3">{chapterDetail.chapter.name_complex}</h1>
-{#if sameText == false}
-	<p class="text-sm mt-0 mb-6 text-center py-3">{chapterDetail.chapter.name_simple}</p>
+<ChapterInfo {chapterDetail} />
+<div class="text-center mt-5 ">
+	<button on:click={toggleEnglish} class="btn {showEnglish ? 'btn-active' : ''}">English</button>
+	<button on:click={toggleArabic} class="btn {showArabic ? 'btn-active' : ''}">Arabic</button>
+</div>
+{#if showEnglish}
+	<VersesEnglish verses={verseDetailEnglish.verses} />
+{/if}
+
+{#if showArabic}
+	<VersesArabic verses={verseDetailArabic.verses} />
 {/if}
