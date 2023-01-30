@@ -4,7 +4,7 @@
 	import VersesEnglish from '../../../components/Verses_English.svelte';
 
 	export let data;
-	const { chapterDetail, verseDetailEnglish, verseDetailArabic, verseStyle } = data;
+	const { chapterDetail, verseDetailEnglish, verseDetailArabic } = data;
 
 	let showEnglish = true;
 	let showArabic = false;
