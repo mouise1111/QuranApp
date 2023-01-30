@@ -1,6 +1,13 @@
-# create-svelte
+# Quran.com 
+### Live Demo
+https://quran-fznh0av06-mouise1111.vercel.app/
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This app is inspired by Quran.com and it uses it's API.
+## Built With
+- Sveltekit
+- Tailwind 
+- DaisyUI
+<hr/>
 
 ## Creating a project
 
