@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import AllChapters from '../components/All_Chapters.svelte';
+	import SearchVerse from '../components/Search_Verse.svelte';
 
 	let chapters = [];
 	onMount(async () => {
@@ -13,22 +14,10 @@
 	};
 
 	getChapters();
-	let searchString;
 </script>
 
-<h1 class="text-5xl font-bold mt-0 mb-6 text-center py-3">Welcome to Quran</h1>
-<div class="flex flex-row mb-6 justify-center">
-	<input
-		bind:value={searchString}
-		type="text"
-		class="border border-gray-400 rounded p-2"
-		placeholder="Search Quran chapters"
-		id="searchInput"
-	/>
-	<button class="btn btn-secondary ml-2">Search</button>
-	<p>{searchString}</p>
-</div>
-
+<h1 class="text-5xl font-bold mt-0 mb-6 text-center py-3">Welcome to Quran.com 🕋</h1>
+<SearchVerse />
 <AllChapters {chapters} />
 
 <style lang="postcss">
